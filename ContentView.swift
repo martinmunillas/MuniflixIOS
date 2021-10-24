@@ -15,11 +15,8 @@ struct ContentView: View {
                 Image("MuniflixLogo").resizable().aspectRatio(contentMode: .fit).frame(width: 200, height: 100, alignment: .center)
                 
                 SignInView()
-                
-                Text("Hello, world!")
-                    .padding().foregroundColor(.white)
-                
-            }
+                Spacer()
+            }.padding(.leading).padding(.trailing)
         }
         
     }

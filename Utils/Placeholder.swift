@@ -1,3 +1,9 @@
+//
+//  StatusBar.swift
+//  Muniflix
+//
+//  Created by Martin Munilla on 24-10-21.
+//
 import SwiftUI
 
 extension View {

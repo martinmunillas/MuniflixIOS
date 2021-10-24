@@ -7,14 +7,19 @@
 
 import SwiftUI
 
-//struct Input: View {
-//    var placeholder: String
-//    var text: Binding<String>
-//    
-//    var body: some View {
-//        TextField("", text: text)
-//            .placeholder(when: text.isEmpty) {
-//                Text("Placeholder recreated").foregroundColor(.gray)
-//        }
-//    }
-//}
+struct Input: View {
+    var placeholder: String
+    var text: Binding<String>
+    
+    init(_ initPlaceholder: String, _ initText: Binding<String>) {
+        placeholder = initPlaceholder
+        text = initText
+    }
+    
+    var body: some View {
+        TextField("", text: text).foregroundColor(.white)
+            .placeholder(when: text.wrappedValue.isEmpty) {
+                Text(placeholder).foregroundColor(.gray)
+        }
+    }
+}

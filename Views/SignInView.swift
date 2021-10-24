@@ -11,12 +11,24 @@ struct SignInView: View {
     @State var email: String = ""
     @State var password: String = ""
     
+    @State var isSignIn: Bool = true
+    
     var body: some View {
         VStack {
-            TextField("Email", text: $email).foregroundColor(.white).placeholder(when: email.isEmpty) {
-                Text("Email").foregroundColor(.white)
+            HStack {
+                Spacer()
+                Button("Sign In") {isSignIn = true}.foregroundColor(isSignIn ? .blue : .white)
+                Spacer()
+                Button("Sign Up") {isSignIn = false}.foregroundColor(!isSignIn ? .blue : .white)
+                Spacer()
+            }.foregroundColor(.white)
+            Input("Email", $email)
+            Input("Password", $password)
+            if isSignIn {
+                Button("Sign In!") {}
+            } else {
+                Button("Sign Up!") {}
             }
-            TextField("Password", text: $password)
         }
     }
 }
