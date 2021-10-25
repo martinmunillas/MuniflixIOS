@@ -1,5 +1,5 @@
 //
-//  StatusBar.swift
+//  Placeholder.swift
 //  Muniflix
 //
 //  Created by Martin Munilla on 24-10-21.

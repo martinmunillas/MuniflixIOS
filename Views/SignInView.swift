@@ -15,6 +15,12 @@ struct SignInView: View {
     
     var body: some View {
         VStack {
+            Group {
+                
+                Spacer()
+                Logo()
+                Spacer()
+            }
             HStack {
                 Spacer()
                 Button("Sign In") {isSignIn = true}.foregroundColor(isSignIn ? .blue : .white)
@@ -22,14 +28,34 @@ struct SignInView: View {
                 Button("Sign Up") {isSignIn = false}.foregroundColor(!isSignIn ? .blue : .white)
                 Spacer()
             }.foregroundColor(.white)
-            Input("Email", $email)
-            Input("Password", $password)
-            if isSignIn {
-                Button("Sign In!") {}
-            } else {
-                Button("Sign Up!") {}
+            Group {
+                Spacer()
+                if !isSignIn {
+                    Text("Choose a profile image").foregroundColor(.white).font(.headline)
+                    ZStack {
+                        
+                        Image("ProfileExample").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100, alignment: .center)
+                        Image(systemName: "camera").resizable().aspectRatio(contentMode: .fit).foregroundColor(.white).frame(width: 40, height: 40, alignment: .center)
+                    }.padding()
+                }
+                Input("Email", "yourname@example.com", $email)
+                Input("Password", "hello123",$password, secure: true)
+                if !isSignIn {
+                    Input("Repeat Password", "hello123",$password, secure: true)
+                }
+                Spacer()
             }
-        }
+            Group {
+                Button(action: {print("SignIn")}) {
+                    Text(isSignIn ? "Sign In!":"Sign Up!")
+                        .padding().background(Color.red).foregroundColor(.white).cornerRadius(7)
+                    
+                }
+                Text("Did you forget your password").foregroundColor(.white)
+                Spacer()
+                
+            }
+        }.padding(.horizontal)
     }
 }
 
