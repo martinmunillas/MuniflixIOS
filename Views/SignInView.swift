@@ -11,8 +11,11 @@ struct SignInView: View {
     @State var email: String = ""
     @State var password: String = ""
     
-    @State var isSignIn: Bool = true
+    @State var isSignIn = true
     
+    @State var isHomeViewActive = false
+    
+    /// <#Description#>
     var body: some View {
         VStack {
             Group {
@@ -46,13 +49,14 @@ struct SignInView: View {
                 Spacer()
             }
             Group {
-                Button(action: {print("SignIn")}) {
+                Button(action: {isHomeViewActive = true}) {
                     Text(isSignIn ? "Sign In!":"Sign Up!")
                         .padding().background(Color.red).foregroundColor(.white).cornerRadius(7)
                     
                 }
                 Text("Did you forget your password").foregroundColor(.white)
                 Spacer()
+                NavigationLink(destination: Home(), isActive: $isHomeViewActive, label: { EmptyView() })
                 
             }
         }.padding(.horizontal)
