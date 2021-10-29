@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct MainView: View {
-    init() {
+    @State var selected: Int
+    
+    init(_ selected: Int = 0) {
+        self.selected = selected
         
         UITabBar.appearance().backgroundColor = UIColor(Color( red: 14/255, green: 14/255, blue: 14/255, opacity: 0.7))
         
@@ -20,24 +23,24 @@ struct MainView: View {
     
     var body: some View {
         
-        TabView() {
+        TabView(selection: $selected) {
             
-            Home().tabItem {
+            HomeView().tabItem {
                 Image(systemName: "house").foregroundColor(.white)
                 Text("Home")
-            }
-            Text("Hello, Movies!").tabItem {
+            }.tag(0)
+            MoviesView().tabItem {
                 Image(systemName: "film").foregroundColor(.white)
                 Text("Movies")
-            }
+            }.tag(1)
             Text("Hello, Series!").tabItem {
                 Image(systemName: "tv").foregroundColor(.white)
                 Text("Series")
-            }
+            }.tag(2)
             Text("Hello, Favourites!").tabItem {
                 Image(systemName: "heart").foregroundColor(.white)
                 Text("Favourites")
-            }
+            }.tag(3)
         }.accentColor(.red).foregroundColor(.white)
     }
     

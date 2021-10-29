@@ -1,5 +1,5 @@
 //
-//  Home.swift
+//  HomeView.swift
 //  Muniflix
 //
 //  Created by Martin Munilla on 27-10-21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Home: View {
+struct HomeView: View {
     
     var body: some View {
         ZStack {
@@ -15,13 +15,14 @@ struct Home: View {
             VStack {
                 Logo()
                 SearchBar()
+                PlayerView("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
                 Spacer()
             }
         }
     }
 }
 
-struct Home_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
     }

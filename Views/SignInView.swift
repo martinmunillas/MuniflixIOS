@@ -56,7 +56,7 @@ struct SignInView: View {
                 }
                 Text("Did you forget your password").foregroundColor(.white)
                 Spacer()
-                NavigationLink(destination: Home(), isActive: $isHomeViewActive, label: { EmptyView() })
+                NavigationLink(destination: MainView().navigationBarBackButtonHidden(true), isActive: $isHomeViewActive, label: { EmptyView() })
                 
             }
         }.padding(.horizontal)

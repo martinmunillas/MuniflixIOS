@@ -18,7 +18,7 @@ struct SearchBar: View {
     var body: some View {
         HStack {
             
-            Button(action: {}) {
+            Button(action:search) {
                 Image(systemName: "magnifyingglass").foregroundColor(searchText.isEmpty ? .white : .blue)
             }
             
