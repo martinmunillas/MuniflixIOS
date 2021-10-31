@@ -16,9 +16,14 @@ struct MovieCard: View {
     }
     
     var body: some View {
-        ZStack {
-            KFImage(URL(string: movie.cover)).resizable().aspectRatio( contentMode: .fill).frame(width: 250, height: 400, alignment: .center)
-        }
+        ZStack(alignment: .bottomLeading) {
+            KFImage(URL(string: movie.cover)).resizable().scaledToFill().frame(width: 250, height: 400, alignment: .center).clipped()
+            Color(white: 0, opacity: 0.3)
+            VStack(alignment: .leading) {
+                Text(movie.name).font(.system(size: 20, weight: .bold, design: .default))
+                Text("\(String(movie.year) ) | \(movie.clasification == "0" ? "All ages" : "+\(movie.clasification)") | \(movie.duration) min.")
+            }.padding()
+        }.frame(width: 250, height: 400, alignment: .bottomLeading).padding(5)
     }
 }
 

@@ -9,14 +9,53 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @ObservedObject var movies = MovieViewModel()
+    @ObservedObject var series = SeriesViewModel()
+    
     var body: some View {
         ZStack {
             Color("Gray").ignoresSafeArea()
-            VStack {
-                Logo()
-                SearchBar()
-                PlayerView("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
-                Spacer()
+            ScrollView {
+                
+                VStack {
+                    Logo()
+                    
+                    SearchBar()
+                    PlayerView("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
+                    Spacer()
+                    VStack(alignment: .leading) {
+                        
+                        Text("Movies").font(.system(size: 24, weight: .bold, design: .default)).padding()
+                        if movies.moviesInfo != nil {
+                            ScrollView(.horizontal) {
+                                
+                                HStack {                ForEach(movies.moviesInfo?.data ?? [], id: \._id) { movie in
+                                    MovieCard(movie)
+                                }
+                                }
+                            }
+                        } else {
+                            
+                            Text("Loading...")
+                        }
+                    }
+                    VStack(alignment: .leading) {
+                        
+                        Text("Series").font(.system(size: 24, weight: .bold, design: .default)).padding()
+                        if movies.moviesInfo != nil {
+                            ScrollView(.horizontal) {
+                                
+                                HStack {                ForEach(series.seriesInfo?.data ?? [], id: \._id) { series in
+                                    SeriesCard(series)
+                                }
+                                }
+                            }
+                        } else {
+                            
+                            Text("Loading...")
+                        }
+                    }
+                }.padding()
             }
         }
     }

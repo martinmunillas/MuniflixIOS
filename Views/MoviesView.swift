@@ -16,11 +16,12 @@ struct MoviesView: View {
         ZStack {
             Color("Gray").ignoresSafeArea()
             if movies.moviesInfo != nil {
-                ScrollView(.horizontal) {
+                ScrollView {
+                    Text("Movies").font(.system(size: 24, weight: .bold)).padding(.vertical)
                     
-                    HStack {                ForEach(movies.moviesInfo?.data ?? [], id: \._id) { movie in
-                            MovieCard(movie)
-                        }
+                    ForEach(movies.moviesInfo?.data ?? [], id: \._id) { movie in
+                        MovieCard(movie)
+                        
                     }
                 }
             } else {
