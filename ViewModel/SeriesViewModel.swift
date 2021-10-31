@@ -19,16 +19,16 @@ class SeriesViewModel: ObservableObject {
         URLSession.shared.dataTask(with: request) { data, res, err in
             do {
                 if let jsonData = data {
-                    print(jsonData)
                 
                     let decodedData = try JSONDecoder().decode(SeriesData.self, from: jsonData)
-                    
+
                     DispatchQueue.main.async {
                         self.seriesInfo = decodedData
                     }
                 }
                 
-            } catch {
+            } catch let error {
+                print(error)
                 print(err)
             }
         }.resume()

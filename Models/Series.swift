@@ -14,7 +14,7 @@ struct Episode: Codable {
     var description: String
     var src: String
     var season: String
-    var cover: String
+    var cover: String?
     
 }
 

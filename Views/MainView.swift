@@ -33,7 +33,7 @@ struct MainView: View {
                 Image(systemName: "film").foregroundColor(.white)
                 Text("Movies")
             }.tag(1)
-            Text("Hello, Series!").tabItem {
+            SeriesView().tabItem {
                 Image(systemName: "tv").foregroundColor(.white)
                 Text("Series")
             }.tag(2)

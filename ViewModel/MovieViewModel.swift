@@ -19,7 +19,6 @@ class MovieViewModel: ObservableObject {
         URLSession.shared.dataTask(with: request) { data, res, err in
             do {
                 if let jsonData = data {
-                    print(jsonData)
                 
                     let decodedData = try JSONDecoder().decode(MoviesData.self, from: jsonData)
                     

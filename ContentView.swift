@@ -10,12 +10,12 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         
-        NavigationView{
+        NavigationView {
             ZStack {
                 Color("Gray").ignoresSafeArea()
                 SignInView().navigationBarHidden(true)
             }
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
         
     }
 }

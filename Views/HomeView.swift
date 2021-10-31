@@ -43,7 +43,7 @@ struct HomeView: View {
                         
                         Text("Series").font(.system(size: 24, weight: .bold, design: .default)).padding()
                         if movies.moviesInfo != nil {
-                            ScrollView(.horizontal) {
+                            ScrollView(.horizontal, showsIndicators: false) {
                                 
                                 HStack {                ForEach(series.seriesInfo?.data ?? [], id: \._id) { series in
                                     SeriesCard(series)
